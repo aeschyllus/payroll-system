@@ -93,13 +93,11 @@ export default function Register() {
 
           <TextInput
             id="email"
-            type="email"
             name="email"
             value={data.email}
             className="mt-1 block w-full"
             autoComplete="username"
             handleChange={onHandleChange}
-            // required
           />
 
           <InputError message={errors.email} className="mt-2" />

@@ -6,11 +6,7 @@ import Table from "./Partials/AttendanceTable";
 
 export default function Attendance(props) {
   const { attendances, auth, errors, has_timed_in } = props;
-  const { post, patch } = useForm({
-    user_id: auth.user.id,
-    time_in: new Date().toLocaleString(),
-    time_out: new Date().toLocaleString(),
-  });
+  const { post, patch } = useForm();
 
   const submit = (e) => {
     e.preventDefault();

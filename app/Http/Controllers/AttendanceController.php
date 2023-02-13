@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -41,8 +42,8 @@ class AttendanceController extends Controller
     public function store(Request $request)
     {
         Attendance::create([
-            'user_id' => $request->user_id,
-            'time_in' => $request->time_in,
+            'user_id' => $request->user()->id,
+            'time_in' => Carbon::now(),
         ]);
 
         return redirect()->route('attendance');
@@ -55,10 +56,10 @@ class AttendanceController extends Controller
      * @param  \App\Models\Attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Attendance $attendance)
+    public function update(Attendance $attendance)
     {
         $attendance->update([
-            'time_out' => $request->time_out
+            'time_out' => Carbon::now(),
         ]);
 
         return redirect()->route('attendance');
